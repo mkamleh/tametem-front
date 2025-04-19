@@ -30,8 +30,6 @@ axios.interceptors.response.use(
   function (error) {
     const axiosError = error as AxiosError;
 
-    console.log("🚀 ~ file: request.ts:62 ~ error:", error);
-
     if (axiosError?.response?.status === 500) {
       toaster.create({
         description: "Something went wrong.",
@@ -45,7 +43,6 @@ axios.interceptors.response.use(
       axiosError?.response?.status === 401 &&
       !axiosError?.response?.config?.url?.includes("login")
     ) {
-      console.log(error);
       clearAllCookies();
       toaster.create({
         description: "Session Expired",
@@ -64,7 +61,6 @@ axios.interceptors.response.use(
       axiosError?.response?.status === 401 &&
       axiosError?.response?.config?.url?.includes("login")
     ) {
-      console.log(error);
       clearAllCookies();
       toaster.create({
         description: "Wrong username and password",

@@ -22,7 +22,6 @@ const useProductDetails = () => {
       { productId },
       {
         onSuccess: (data) => {
-          console.log(data);
           navigate(`/order-details/${data.id}`);
         },
       }
